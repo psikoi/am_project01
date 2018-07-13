@@ -23,10 +23,6 @@ public class GameManager : MonoBehaviour
     public Character characterChoosed;
 
     private GameState state;
-  
-    /* Test values */
-
-    private Session testOpSession;
 
     void Awake()
     {
@@ -50,18 +46,16 @@ public class GameManager : MonoBehaviour
     {   
         spawner =  new EntitySpawner();
         sessionManager = new SessionManager();
-        
-        testOpSession = new Session(1, userAgainst , new Buster(), null);
 
-        testOpSession.actions.Add(new PlayerAction(ActionType.JUMP, 1.2f, 1));
-        testOpSession.actions.Add(new PlayerAction(ActionType.MOVE_LEFT, 2f, 1));
-        testOpSession.actions.Add(new PlayerAction(ActionType.JUMP, 2.5f, 1));
+        Session opponentSession = sessionManager.loadOppSession(userAgainst.id,levelChoosed);
 
-        sessionManager.create(2, userLogged, characterChoosed, testOpSession);
+        sessionManager.create(2, userLogged, characterChoosed, opponentSession);
         sessionManager.load(2);
-       
+
         Session currentSession = sessionManager.getCurrentSession();
-        Session opponentSession = sessionManager.getOpponentSession();
+        sessionManager.getCurrentSession().opponentSession = opponentSession;
+
+        Debug.Log(opponentSession.id);
 
         playerObject = spawner.spawnPlayer(currentSession.user, currentSession.character);
 
