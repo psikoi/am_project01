@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlayerAction {
 
     public ActionType type;
-    public float timestamp;
-    public int previousExecutions;
+    public int startTick;
+    public int endTick;
     public bool executed;
 
-    public PlayerAction(ActionType type, float timestamp, int previousExecutions) {
+    public PlayerAction(ActionType type, int startTick, int endTick) {
         this.type = type;
-        this.timestamp = timestamp;
-        this.previousExecutions = previousExecutions;
+        this.startTick = startTick;
+        this.endTick = endTick;
         executed = false;
     }
 

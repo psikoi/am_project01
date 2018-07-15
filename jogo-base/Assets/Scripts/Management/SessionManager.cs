@@ -69,9 +69,9 @@ public class SessionManager
         for(int i=0; i < actionsInformation.Count; i++)
         {
             ActionType actionType = ActionTypeHandler.getActionType(actionsInformation[i]["açao"].ToString());
-            float timestamp = float.Parse(actionsInformation[i]["tempoAtual"].ToString());
-            int previousExecutions = int.Parse(actionsInformation[i]["anteriorExecucao"].ToString());
-            PlayerAction playerAction = new PlayerAction(actionType, timestamp, previousExecutions);
+            int tickInicial = int.Parse(actionsInformation[i]["tickInicial"].ToString());
+            int tickFinal = int.Parse(actionsInformation[i]["tickFinal"].ToString());
+            PlayerAction playerAction = new PlayerAction(actionType, tickInicial, tickFinal);
             actions.Insert(i,playerAction);
         }
 
@@ -159,8 +159,8 @@ public class SessionManager
         for (int i = 0; i < actions.Count; i++)
         {
             string actionInfo = "{ "+ quote + "action" + quote +" : " + quote + actions[i].type.ToString() + quote +
-                ", " + quote + "timestamp" + quote + " : " + quote + actions[i].timestamp.ToString() + quote+
-                ", " + quote + "anteriorExecucao" + quote + " : " + quote + actions[i].previousExecutions.ToString() + quote +
+                ", " + quote + "tickInicial" + quote + " : " + quote + actions[i].startTick.ToString() + quote+
+                ", " + quote + "tickFinal" + quote + " : " + quote + actions[i].endTick.ToString() + quote +
                 ", " + quote + "sessionID" + quote + " : " + quote + sessionID.ToString() + quote +
                 "},";
             information += actionInfo;
