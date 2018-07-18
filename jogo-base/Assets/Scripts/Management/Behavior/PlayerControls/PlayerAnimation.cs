@@ -14,6 +14,19 @@ public class PlayerAnimation : MonoBehaviour {
     {
         localPlayer = gameObject.GetComponent<Player>();
         anim = GetComponent<Animator>();
+        Character character = GameManager.instance.characterChoosen;
+        if (character.name == "Buster")
+        {
+            anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Buster");
+        }
+        else if (character.name == "Sargent")
+        {
+            anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Sargent"); 
+        }
+        else
+        {
+            anim.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Scout");
+        }
     }
 
 	// Update is called once per frame
