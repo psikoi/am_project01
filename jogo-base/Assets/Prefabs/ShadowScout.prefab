@@ -149,7 +149,11 @@ Animator:
   m_GameObject: {fileID: 1031576944739244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< HEAD:jogo-base/Assets/Prefabs/ShadowScout.prefab
   m_Controller: {fileID: 9100000, guid: 3244c396f600ed54cb9761d17a0a1495, type: 2}
+=======
+  m_Controller: {fileID: 9100000, guid: 0708aefb69c145f4f89933701fc52276, type: 2}
+>>>>>>> 9cba4b8b6efce192103c810e7e83b7daf549a562:jogo-base/Assets/Prefabs/Shadow.prefab
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -191,7 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stamina: 0
+<<<<<<< HEAD:jogo-base/Assets/Prefabs/ShadowScout.prefab
   stunClock: 0
+=======
+>>>>>>> 9cba4b8b6efce192103c810e7e83b7daf549a562:jogo-base/Assets/Prefabs/Shadow.prefab
 --- !u!114 &114699866130023202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,8 +298,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD:jogo-base/Assets/Prefabs/ShadowScout.prefab
   m_Sprite: {fileID: 21300016, guid: acb43bf98bccfec42a6ed26332dc9dac, type: 3}
   m_Color: {r: 0.53676474, g: 0.53676474, b: 0.53676474, a: 0.491}
+=======
+  m_Sprite: {fileID: 21300016, guid: 825a7f0bec38e8f4db509d038448112b, type: 3}
+  m_Color: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 0.491}
+>>>>>>> 9cba4b8b6efce192103c810e7e83b7daf549a562:jogo-base/Assets/Prefabs/Shadow.prefab
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
