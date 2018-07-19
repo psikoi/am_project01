@@ -89,18 +89,7 @@ public class GameManager : MonoBehaviour
             sessionManager.getCurrentSession().elapsedTime += Time.deltaTime;
         }
     }
-
-    private void OnApplicationQuit()
-    {
-        if (state == GameState.INGAME)
-        {
-            ActionTracker tracker = playerObject.GetComponent<ActionTracker>();
-            Debug.Log(tracker.actions.Count);
-            sessionManager.getCurrentSession().actions.AddRange(tracker.actions);
-            sessionManager.save();
-        }
-    }
-
+    
     public User getLocalUser()
     {
         return sessionManager.getCurrentSession().user;
