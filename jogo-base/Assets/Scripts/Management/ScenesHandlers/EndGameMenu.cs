@@ -58,6 +58,10 @@ public class EndGameMenu : MonoBehaviour
         {
             SceneManager.LoadScene("Scenes/Level1");
         }
+        else if (GameManager.instance.levelChoosen == 2)
+        {
+            SceneManager.LoadScene("Scenes/Level2");
+        }
     }
 
 }
