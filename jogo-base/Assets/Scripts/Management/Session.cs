@@ -32,4 +32,15 @@ public class Session
         this.level = level;
     }
 
+    public Session(int id, User user, Character character, Session opponentSession, List<PlayerAction> actions, int level,float elapsedTime)
+    {
+        this.id = id;
+        date = DateTime.Now;
+        this.actions = actions;
+        this.elapsedTime = elapsedTime;
+        this.user = user;
+        this.character = character;
+        this.opponentSession = opponentSession;
+        this.level = level;
+    }
 }

@@ -53,10 +53,10 @@ public class SessionManager
 
         List<PlayerAction> playerActions = getPlayerActions(int.Parse(sessionInformation["idSessao"].ToString()));
 
-        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), null, playerActions, int.Parse(sessionInformation["idNivel"].ToString()));
+        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), null, playerActions, int.Parse(sessionInformation["idNivel"].ToString()), float.Parse(sessionInformation["tempoPassado"].ToString()));
         return session;
     }
-
+    
     private List<PlayerAction> getPlayerActions(int sessionID)
     {
         List<PlayerAction> actions = new List<PlayerAction>();
