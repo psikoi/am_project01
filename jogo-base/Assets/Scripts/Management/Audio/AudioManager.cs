@@ -88,7 +88,8 @@ public class AudioManager : MonoBehaviour {
     /* Reproduz o som com o volume pre-definido (1)*/
     public void playSound(string name)
     {
-        StartCoroutine(play(name, -1));
+        if(!PauseMenu.gameIsPaused)
+            StartCoroutine(play(name, -1));
     }
 
     /* Reproduz o som com um volume recebido */

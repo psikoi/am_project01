@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             opponentSession = sessionManager.loadOppSession(userAgainst.id, levelChoosen);
         }
 
-        currentSession = sessionManager.create(userLogged, characterChoosen, opponentSession);
+        currentSession = sessionManager.create(userLogged, characterChoosen, opponentSession,levelChoosen);
         
         playerObject = spawner.spawnPlayer(currentSession.user, currentSession.character);
 
