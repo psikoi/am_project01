@@ -10,9 +10,9 @@ public class SessionManager
 {
     private Session currentSession;
 
-    public Session create(User user, Character character, Session opponentSession)
+    public Session create(User user, Character character, Session opponentSession, int level)
     {
-        currentSession = new Session(-1, user, character, opponentSession);
+        currentSession = new Session(-1, user, character, opponentSession, level);
         return currentSession;
     }
 
@@ -53,7 +53,7 @@ public class SessionManager
 
         List<PlayerAction> playerActions = getPlayerActions(int.Parse(sessionInformation["idSessao"].ToString()));
 
-        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), null, playerActions);
+        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), null, playerActions, int.Parse(sessionInformation["idNivel"].ToString()));
         return session;
     }
 
@@ -120,7 +120,7 @@ public class SessionManager
 
         List<PlayerAction> playerActions = getPlayerActions(id);
 
-        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), sessionAgainst, playerActions);
+        Session session = new Session(int.Parse(sessionInformation["idSessao"].ToString()), user, getCharacter(sessionInformation["personagem"].ToString()), sessionAgainst, playerActions, int.Parse(sessionInformation["idNivel"].ToString()));
         return session;
     }
 
@@ -145,7 +145,7 @@ public class SessionManager
         string id = session.user.id.ToString();
         form.AddField("elapsedTime", session.elapsedTime.ToString());
         form.AddField("date", date);
-        form.AddField("level", 1.ToString());
+        form.AddField("level", session.level);
         form.AddField("opponentSession", ((session.opponentSession != null) ? session.opponentSession.id : -1).ToString());
         form.AddField("character", session.character.name);
         form.AddField("userID", session.user.id.ToString());
