@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameEndTrigger : MonoBehaviour {
 
-    private EndGameMenu endMenu;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -16,11 +14,25 @@ public class GameEndTrigger : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody2D>().angularVelocity = 0f;
 
-            endMenu = GetComponent<EndGameMenu>();
+            EndGameMenu endMenu =  GameObject.FindGameObjectWithTag("GameEndMenu").GetComponent<EndGameMenu>();
 
-            endMenu.show(Result.DEFEAT,GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+            Session oppSession = GameManager.instance.sessionManager.getOpponentSession();
+            Session currSession = GameManager.instance.sessionManager.getCurrentSession();
 
-            //end screen e isso
+            if (oppSession == null) 
+                endMenu.show(Result.COMPLETED,GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+            else
+            {
+                if(currSession.elapsedTime > oppSession.elapsedTime)
+                {
+                    endMenu.show(Result.DEFEAT, GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+                }
+                else
+                {
+                    endMenu.show(Result.VICTORY, GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+                }
+            } 
+                
         }
     }
 

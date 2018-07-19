@@ -33,24 +33,28 @@ public class Vitals : MonoBehaviour
 
     void Update()
     {
-        /* Se o player não está a correr, restaurar stamina */
-        if (localPlayer.movement.sprinting)
-            reduceStamina();
-        else
-            restoreStamina();
-
-        if (stamina == 0 && localPlayer.movement.sprinting)
+        if (!PauseMenu.gameIsPaused)
         {
-            localPlayer.movement.sprinting = false;
+            /* Se o player não está a correr, restaurar stamina */
+            if (localPlayer.movement.sprinting)
+                reduceStamina();
+            else
+                restoreStamina();
+
+            if (stamina == 0 && localPlayer.movement.sprinting)
+            {
+                localPlayer.movement.sprinting = false;
+            }
+
+            /* Se está stunned, decrescer o contador */
+            if (isStunned())
+                stunClock -= Time.deltaTime;
+
+            /* Se o contador passou do limite minimo, igualar a 0 */
+            if (stunClock < 0)
+                stunClock = 0;
         }
-
-        /* Se está stunned, decrescer o contador */
-        if (isStunned())
-            stunClock -= Time.deltaTime;
-
-        /* Se o contador passou do limite minimo, igualar a 0 */
-        if (stunClock < 0)
-            stunClock = 0;
+        
     }
 
     /* Restaura a stamina todos os game ticks (sobe a stamina por uma pequena quantidade) */
