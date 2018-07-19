@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEndTrigger : MonoBehaviour {
+public class GameEndTrigger : MonoBehaviour
+{
+
+    private EndGameMenu endMenu;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +18,25 @@ public class GameEndTrigger : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().angularVelocity = 0f;
 
 
-            //end screen e isso
+            EndGameMenu endMenu = GameObject.FindGameObjectWithTag("GameEndMenu").GetComponent<EndGameMenu>();
+
+            Session oppSession = GameManager.instance.sessionManager.getOpponentSession();
+            Session currSession = GameManager.instance.sessionManager.getCurrentSession();
+
+            if (oppSession == null)
+                endMenu.show(Result.COMPLETED, GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+            else
+            {
+                if (currSession.elapsedTime > oppSession.elapsedTime)
+                {
+                    endMenu.show(Result.DEFEAT, GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+                }
+                else
+                {
+                    endMenu.show(Result.VICTORY, GameManager.instance.sessionManager.getCurrentSession().elapsedTime);
+                }
+            }
+
         }
     }
 
