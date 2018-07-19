@@ -19,6 +19,11 @@ public class GameEndTrigger : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody2D>().angularVelocity = 0f;
 
+            //Save Session
+            ActionTracker tracker = player.GetComponent<ActionTracker>();
+            Debug.Log(tracker.actions.Count);
+            GameManager.instance.sessionManager.getCurrentSession().actions.AddRange(tracker.actions);
+            GameManager.instance.sessionManager.save();
 
             EndGameMenu endMenu = GameObject.FindGameObjectWithTag("GameEndMenu").GetComponent<EndGameMenu>();
 
